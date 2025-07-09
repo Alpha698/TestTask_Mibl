@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1178504086931937889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.17, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,12 +41,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2786342533360804955}
   - component: {fileID: 6420029247777506141}
-  - component: {fileID: 8623984885746140317}
+  - component: {fileID: 8936581545646770332}
   - component: {fileID: 5912531260329658797}
   - component: {fileID: 8367311234460930894}
   m_Layer: 6
-  m_Name: Character
-  m_TagString: Player
+  m_Name: Enemy_1
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
+  m_Sprite: {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,7 +119,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8623984885746140317
+--- !u!114 &8936581545646770332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,16 +128,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7784972660713679707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91828c4d7afcb4848a0e7392e58ca2df, type: 3}
+  m_Script: {fileID: 11500000, guid: dd96b15069159bb449e64375f0c5cfa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 8
-  groundCheck: {fileID: 7803827601601810531}
-  groundRadius: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  speed: 1
+  patrolPoints: []
+  chaseRange: 3
 --- !u!60 &5912531260329658797
 PolygonCollider2D:
   m_ObjectHideFlags: 0

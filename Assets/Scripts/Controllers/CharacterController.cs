@@ -35,7 +35,7 @@ public class CharacterController : MonoBehaviour
 
         if (input.ShootPressed)
         {
-            //Shoot();
+            Shoot();
             input.Reset(); // если нужно сбрасывать стрельбу тоже
         }
 
@@ -50,8 +50,9 @@ public class CharacterController : MonoBehaviour
     }
 
 
-    //private void Shoot()
-    //{
-    //    Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-    //}
+    private void Shoot()
+    {
+        Debug.Log("Shoot!");
+        //Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+    }
 }
