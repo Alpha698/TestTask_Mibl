@@ -18,6 +18,12 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float groundRadius = 0.1f;
     [SerializeField] private LayerMask groundLayer;
 
+    // for animation
+    private static readonly int HashSpeed = Animator.StringToHash("Speed");
+    private static readonly int HashGrounded = Animator.StringToHash("IsGrounded");
+    private static readonly int HashJump = Animator.StringToHash("Jump");
+
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private float horizontalInput;
@@ -32,17 +38,20 @@ public class CharacterController : MonoBehaviour
 
         horizontalInput = input.Horizontal;
 
+        animator.SetBool(HashGrounded, isGrounded);
+        animator.SetFloat(HashSpeed, Mathf.Abs(horizontalInput));
+
         if (input.JumpPressed && isGrounded)
         {
             Jump();
-            animator.SetTrigger("Jump");
-            input.Reset(); // <== вот это обязательно, сбрасываем JumpPressed после прыжка
+            animator.SetTrigger(HashJump);
+            input.Reset(); 
         }
 
         if (input.ShootPressed)
         {
             Shoot();
-            input.Reset(); // если нужно сбрасывать стрельбу тоже
+            input.Reset(); 
         }
 
 
@@ -73,8 +82,8 @@ public class CharacterController : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jump!");
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        animator.SetTrigger("Idle");
     }
 
 

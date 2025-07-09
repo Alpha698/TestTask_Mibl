@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private Transform[] patrolPoints;
-    [SerializeField] private float chaseRange = 3f;
+    [SerializeField] private float chaseRange = 5f;
 
     private int currentPointIndex = 0;
     private bool isChasing = false;

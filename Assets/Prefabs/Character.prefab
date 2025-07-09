@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 8
+  jumpForce: 8.5
   animator: {fileID: 4306848207692228153}
   firePoint: {fileID: 1393988286235813720}
   bulletPrefab: {fileID: 6246197100207125095, guid: 46a4e08c5ca4b5649a4f3d99bb3aad50, type: 3}

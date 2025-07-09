@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   patrolPoints: []
-  chaseRange: 3
+  chaseRange: 5
 --- !u!50 &8367311234460930894
 Rigidbody2D:
   serializedVersion: 4
