@@ -11,11 +11,15 @@ public class EnemyController : MonoBehaviour
     private bool isChasing = false;
 
     private Transform playerTransform;
+    private int lookDirection = 1;
 
-    public void Initialize(Transform player, Transform[] newPatrolPoints)
+    private LevelController level;
+
+    public void Initialize(Transform player, Transform[] newPatrolPoints, LevelController levelController)
     {
         playerTransform = player.transform;
         patrolPoints = newPatrolPoints;
+        level = levelController;
     }
 
     private void Update()
@@ -59,14 +63,24 @@ public class EnemyController : MonoBehaviour
     {
         Vector2 direction = (target - (Vector2)transform.position).normalized;
         transform.position += (Vector3)(direction * speed * Time.deltaTime);
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        if (direction.x > 0.01f)
         {
-            Debug.Log("Player touched: Game Over");
-            // Здесь можно вызвать GameOver через UIScreenManager (если его инжектить)
+            lookDirection = 1;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else if (direction.x < -0.01f)
+        {
+            lookDirection = -1;
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
+
+    public void Die()
+    {
+        Debug.Log("DIE");
+        level.NotifyEnemyKilled(this);
+        Destroy(this.gameObject);
+    }
+
 }

@@ -1,8 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class LevelController : MonoBehaviour
 {
+    [Inject] private DiContainer container;
+    [Inject] private UIScreenManager screenManager;
+
     [Header("Player")]
     [SerializeField] private CharacterController playerPrefab;
     [SerializeField] private Transform playerSpawnPoint;
@@ -11,8 +17,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] private EnemySpawnData[] enemies;
 
     private CharacterController player;
-    [Inject] private DiContainer container;
 
+    private List<EnemyController> activeEnemies = new();
 
     public void SetPlayer(CharacterController newPlayer)
     {
@@ -30,7 +36,8 @@ public class LevelController : MonoBehaviour
                 this.gameObject.transform
             );
 
-            enemy.Initialize(player.transform, data.patrolPoints);
+            enemy.Initialize(player.transform, data.patrolPoints, this);
+            activeEnemies.Add(enemy);
         }
 
     }
@@ -46,6 +53,19 @@ public class LevelController : MonoBehaviour
 
         player = newPlayer;
         return player;
+    }
+
+
+    public void NotifyEnemyKilled(EnemyController enemy)
+    {
+        activeEnemies.Remove(enemy);
+
+        if (activeEnemies.Count == 0)
+        {
+            Debug.Log("All enemies defeated. Victory!");
+            screenManager.ShowWinScreen(true);
+            Time.timeScale = 0f;
+        }
     }
 }
 

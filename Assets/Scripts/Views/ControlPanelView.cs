@@ -16,12 +16,17 @@ public class ControlPanelView : MonoBehaviour
     [SerializeField] private Button shootButton;
     [SerializeField] private Button jumpButton;
 
+    int maxbulletCount = 55;
+    int currentbulletCount;
+
     private void Start()
     {
         pauseButton.onClick.AddListener(OnPauseButtonClicked);
         shootButton.onClick.AddListener(OnShoot);
         jumpButton.onClick.AddListener(OnJump);
 
+
+        currentbulletCount = maxbulletCount;
     }
 
     private void OnPauseButtonClicked()
@@ -38,6 +43,19 @@ public class ControlPanelView : MonoBehaviour
 
     public void OnJump() => input.Jump();
 
-    public void OnShoot() => input.Shoot();
+    public void OnShoot() 
+    {
+
+        if (currentbulletCount != 0)
+        {
+            currentbulletCount--;
+            bulletLabel.text = currentbulletCount + "/" + maxbulletCount;
+            input.Shoot();
+        }
+        else
+        {
+            bulletLabel.text = currentbulletCount + "/" + maxbulletCount;
+        }
+    }
 
 }

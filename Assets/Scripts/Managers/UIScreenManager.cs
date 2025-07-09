@@ -18,14 +18,15 @@ public class UIScreenManager : MonoBehaviour
 
 
     // if we want use CanvasGroup instead of GameObject.SetActive
-    
+
     //public void ShowMainMenuScreen(bool show)
     //{
     //    mainMenuScreen.SetActive(show);
     //    CanvasGroup cg = mainMenuScreen.GetComponent<CanvasGroup>();
-    //    cg.alpha = show ? 0f : 1f;
+    //    cg.alpha = show ? 1f : 0f;
     //    cg.interactable = show ? true : false;
     //    cg.blocksRaycasts = show ? true : false;
     //}
+
 
 }
