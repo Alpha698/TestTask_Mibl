@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Zenject;
-using Zenject.SpaceFighter;
 
 public class CharacterController : MonoBehaviour
 {
@@ -69,9 +68,9 @@ public class CharacterController : MonoBehaviour
         bool isRunning = Mathf.Abs(horizontalInput) > 0.01f;
 
         if (isRunning && !wasRunning)
-            animator.SetTrigger("Run");        // начал бежать
+            animator.SetTrigger("Run");        
         else if (!isRunning && wasRunning)
-            animator.SetTrigger("Idle");       // остановился
+            animator.SetTrigger("Idle");     
 
         wasRunning = isRunning;
 
@@ -94,7 +93,6 @@ public class CharacterController : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().Init(lookDirection);
 
-        //Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

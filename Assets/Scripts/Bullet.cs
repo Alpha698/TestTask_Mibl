@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
         direction = lookDir;
         startPosition = transform.position;
 
-        //Destroy(gameObject, 2f); // защита от висящих пуль
     }
 
     private void Update()
@@ -24,16 +23,14 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(startPosition, transform.position) > maxDistance)
         {
-            Destroy(gameObject); // защита от зависания
+            Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("by collider");
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("by enemy");
             var enemy = other.GetComponent<EnemyController>();
             if (enemy != null)
             {

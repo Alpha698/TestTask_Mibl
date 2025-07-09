@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Zenject;
 
 public class EnemyController : MonoBehaviour
 {
